@@ -3,5 +3,5 @@
 * 웹 프론트엔드 (React with Typescript)
 * iOS
 
-사용 라이브러리
+사용 도구
 * vite, react, react-router-dom, react-query, tailwindcss
