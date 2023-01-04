@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 import {isEmailValid} from "./Auth+utils";
-import {useSignUpUser} from "../hooks/useSignUpUser";
+import {useSignUpUser} from "../hooks/user";
 
 const SignUp = () => {
 
