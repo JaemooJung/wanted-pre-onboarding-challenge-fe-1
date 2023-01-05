@@ -4,4 +4,4 @@
 * iOS
 
 사용 도구
-* vite, react, react-router-dom, react-query, tailwindcss
+* vite, react, react-router-dom, react-query, recoil, tailwindcss
