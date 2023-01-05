@@ -20,9 +20,6 @@ export const useSignUpUser = () => {
     mutationFn: async (authInfo: AuthInfo) => {
       const response = await fetcher('/users/create', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(authInfo),
       });
       if (!response.ok) {
@@ -53,9 +50,6 @@ export const useSignInUser = () => {
     mutationFn: async (authInfo: AuthInfo) => {
       const response = await fetcher('/users/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(authInfo),
       });
       if (!response.ok) {
