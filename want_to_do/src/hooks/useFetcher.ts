@@ -6,7 +6,7 @@ export const useFetcher = () => {
   return async (url: string,
                 options: RequestInit = {},
                 contentType: string = 'application/json') => {
-    return await fetch(BASE_API_URL + url, {
+    const res = await fetch(BASE_API_URL + url, {
       ...options,
       headers: {
         ...options.headers,
@@ -14,5 +14,11 @@ export const useFetcher = () => {
         Authorization: `${accessToken}`,
       },
     });
+    if (res.status === 401) {
+        alert('로그인 정보가 없습니다. 다시 로그인해주세요.');
+        localStorage.removeItem('accessToken');
+        window.location.href = '/';
+    }
+    return res;
   }
 }

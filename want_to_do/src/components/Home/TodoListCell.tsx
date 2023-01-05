@@ -1,7 +1,8 @@
 import {Todo, useDeleteTodo} from "../../hooks/todos";
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {isEditModeOnState} from "../../states/isEditModeOnState";
 import {todoToUpdateState} from "../../states/todoToUpdateState";
+import {useNavigate} from "react-router-dom";
 
 interface TodoListCellProps {
   todo: Todo;
@@ -19,9 +20,10 @@ export const TodoListCell = ({todo}: TodoListCellProps) => {
   const isEditModeOn = useRecoilValue(isEditModeOnState);
   const [todoToUpdate, setTodoToUpdate] = useRecoilState(todoToUpdateState);
   const deleteTodo = useDeleteTodo();
+  const navigate = useNavigate();
 
   const showDetailedContent = () => {
-
+    navigate(`/home/${todo.id}`);
   }
 
   const handleEditTodo = () => {
@@ -33,8 +35,9 @@ export const TodoListCell = ({todo}: TodoListCellProps) => {
   }
 
   return (
-    <div className={`flex flex-row bg-neutral-100 m-2 items-center justify-between`}
-
+    <div className={`flex flex-row bg-neutral-100 m-2 items-center justify-between 
+                     hover:cursor-pointer hover:bg-neutral-200`}
+         onClick={showDetailedContent}
     >
       <span className={`p-4`}>{todo.title}</span>
       {isEditModeOn &&

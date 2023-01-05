@@ -63,8 +63,8 @@ export const useSignInUser = () => {
       navigate('/home');
     },
     onError: (res: Response) => {
-      if (res.status === 401) {
-        alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
+      if (res.status === 400) {
+        alert('로그인에 실패했습니다.');
       } else {
         alert('알 수 없는 에러가 발생했습니다.');
       }

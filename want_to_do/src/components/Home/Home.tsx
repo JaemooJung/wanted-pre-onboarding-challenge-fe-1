@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
@@ -43,11 +43,16 @@ const Home = () => {
   }
 
   return (
-    <div className={`flex flex-col h-full w-full`}>
-      <HeaderMenu />
-      {isAddTodoOn && <AddTodoForm toggleAddTodo={toggleAddTodo}/>}
-      {todoToUpdate && <EditTodoForm />}
-      <TodoList/>
+    <div className={`flex flex-row h-full w-full`}>
+      <div className={`flex flex-col`}>
+        <HeaderMenu />
+        {isAddTodoOn && <AddTodoForm toggleAddTodo={toggleAddTodo}/>}
+        {todoToUpdate && <EditTodoForm />}
+        <TodoList/>
+      </div>
+      <div className={`flex flex-col`}>
+        <Outlet />
+      </div>
     </div>
   )
 }

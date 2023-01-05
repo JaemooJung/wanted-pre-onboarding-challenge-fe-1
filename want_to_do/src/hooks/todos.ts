@@ -33,6 +33,27 @@ export const useGetTodos = () => {
   })
 }
 
+interface GetTodoByIdResponse {
+  data: Todo;
+}
+
+export const useGetTodoById = (id: string) => {
+  const fetcher = useFetcher();
+
+  return useQuery({
+    queryKey: ['todos', id],
+    queryFn: async ():Promise<GetTodoByIdResponse> => {
+      const response = await fetcher(`/todos/${id}`, {
+        method: 'GET',
+      });
+      if (!response.ok) {
+        throw response;
+      }
+      return response.json();
+    },
+  })
+}
+
 export interface TodoRequestBody {
   title: string;
   content: string;
