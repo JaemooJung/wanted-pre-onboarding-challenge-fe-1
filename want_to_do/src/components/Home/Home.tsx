@@ -2,7 +2,7 @@ import {Outlet, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
-import {useRecoilState, useRecoilValue} from "recoil";
+import {useRecoilState} from "recoil";
 import {isEditModeOnState} from "../../states/isEditModeOnState";
 import EditTodoForm from "./EditTodoForm";
 import {todoToUpdateState} from "../../states/todoToUpdateState";
@@ -11,9 +11,10 @@ const Home = () => {
   const navigate = useNavigate();
   const [isAddTodoOn, setIsAddTodoOn] = useState(false);
   const [isEditModeOn, setIsEditModeOn] = useRecoilState(isEditModeOnState);
-  const todoToUpdate = useRecoilValue(todoToUpdateState);
+  const [todoToUpdate, setTodoToUpdate] = useRecoilState(todoToUpdateState);
 
   const handleLogout = () => {
+    if (!confirm("정말 로그아웃 하시겠습니까?")) return;
     localStorage.removeItem('accessToken');
     navigate('/');
   }
@@ -24,6 +25,9 @@ const Home = () => {
   }
 
   const toggleEditMode = () => {
+    if (todoToUpdate) {
+      setTodoToUpdate(null);
+    }
     setIsEditModeOn(!isEditModeOn);
   }
 
@@ -43,14 +47,14 @@ const Home = () => {
   }
 
   return (
-    <div className={`flex flex-row h-full w-full`}>
+    <div className={`flex h-full w-full`}>
       <div className={`flex flex-col`}>
         <HeaderMenu />
         {isAddTodoOn && <AddTodoForm toggleAddTodo={toggleAddTodo}/>}
         {todoToUpdate && <EditTodoForm />}
         <TodoList/>
       </div>
-      <div className={`flex flex-col`}>
+      <div className={`absolute left-1/2 transform -translate-x-1/2`}>
         <Outlet />
       </div>
     </div>
