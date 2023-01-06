@@ -1,10 +1,10 @@
 import {useUpdateTodo} from "../../hooks/todos";
 import {useEffect, useState} from "react";
-import {useRecoilValue} from "recoil";
+import {useRecoilState} from "recoil";
 import {todoToUpdateState} from "../../states/todoToUpdateState";
 
 const EditTodoForm = () => {
-  const todoToUpdate = useRecoilValue(todoToUpdateState);
+  const [todoToUpdate, setTodoToUpdate] = useRecoilState(todoToUpdateState);
   if (!todoToUpdate) { return null; }
 
   const [title, setTitle] = useState("");
@@ -26,20 +26,24 @@ const EditTodoForm = () => {
   }
 
   return (
-    <div className={`flex flex-col items-center justify-center`}>
+    <div className={`flex flex-col items-center justify-center 
+                    bg-neutral-200 p-4 m-2 rounded-lg`}>
       <span>Title</span>
-      <input className={`bg-neutral-100`}
+      <input className={`bg-neutral-100 w-2/3 h-8 rounded mb-4`}
              type="text"
              value={title}
              onChange={(e) => setTitle(e.target.value)}
       />
       <span>Content</span>
-      <input className={`bg-neutral-100`}
+      <input className={`bg-neutral-100 w-2/3 h-8 rounded mb-6`}
              type="text"
              value={content}
              onChange={(e) => setContent(e.target.value)}
       />
-      <button onClick={handleUpdateTodo}> 수정하기 </button>
+      <div className={`flex flex-row gap-8`}>
+        <button onClick={() => setTodoToUpdate(null)}> 취소 </button>
+        <button onClick={handleUpdateTodo}> 수정하기 </button>
+      </div>
     </div>
   )
 }

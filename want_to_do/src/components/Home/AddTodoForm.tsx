@@ -20,20 +20,25 @@ const AddTodoForm = ({toggleAddTodo}: AddTodoFormProps) => {
   }
 
   return (
-    <div className={`flex flex-col items-center justify-center`}>
+    <div className={`flex flex-col items-center justify-center 
+                    bg-neutral-200 p-4 m-2 rounded-lg`}
+    >
       <span>Title</span>
-      <input className={`bg-neutral-100`}
+      <input className={`bg-neutral-100 w-2/3 h-8 rounded mb-4`}
              type="text"
              value={title}
              onChange={(e) => setTitle(e.target.value)}
       />
       <span>Content</span>
-      <input className={`bg-neutral-100`}
+      <input className={`bg-neutral-100 w-2/3 h-8 rounded mb-6`}
              type="text"
              value={content}
              onChange={(e) => setContent(e.target.value)}
       />
-      <button onClick={handleCreateTodo}> 추가하기 </button>
+      <div className={`flex flex-row gap-8`}>
+        <button onClick={toggleAddTodo}> 취소 </button>
+        <button onClick={handleCreateTodo}> 추가 </button>
+      </div>
     </div>
   )
 }

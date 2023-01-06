@@ -26,16 +26,19 @@ export const TodoListCell = ({todo}: TodoListCellProps) => {
     navigate(`/home/${todo.id}`);
   }
 
-  const handleEditTodo = () => {
+  const handleEditTodo = (event: React.MouseEvent) => {
+    event.stopPropagation()
     todoToUpdate ? setTodoToUpdate(null) : setTodoToUpdate(todo);
   }
 
-  const handleDeleteTodo = () => {
-    deleteTodo.mutate(todo.id);
+  const handleDeleteTodo = (event: React.MouseEvent) => {
+    event.stopPropagation()
+    confirm("정말 삭제하시겠습니까?") && deleteTodo.mutate(todo.id);
   }
 
   return (
-    <div className={`flex flex-row bg-neutral-100 m-2 items-center justify-between 
+    <div className={`flex flex-row bg-neutral-100 my-2 rounded-lg
+                     items-center justify-between 
                      hover:cursor-pointer hover:bg-neutral-200`}
          onClick={showDetailedContent}
     >
@@ -43,7 +46,8 @@ export const TodoListCell = ({todo}: TodoListCellProps) => {
       {isEditModeOn &&
         <div className={`flex flex-row gap-2 px-2`}>
             <button onClick={handleEditTodo}>수정</button>
-            <button onClick={handleDeleteTodo}>삭제</button>
+            <button className={`text-red-500`}
+                onClick={handleDeleteTodo}>삭제</button>
         </div>
       }
       {!isEditModeOn &&
