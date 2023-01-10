@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React from 'react'
 import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Intro from "./components/Intro/Intro";

@@ -14,7 +14,6 @@ const EditTodoForm = () => {
   useEffect(() => {
     setTitle(todoToUpdate.title);
     setContent(todoToUpdate.content);
-
   },[todoToUpdate]);
 
   const handleUpdateTodo = () => {
