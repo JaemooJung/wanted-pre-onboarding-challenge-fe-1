@@ -1,6 +1,4 @@
-import {useNavigate} from "react-router-dom";
-import React, {useState} from "react";
-import {isEmailValid} from "./Auth+utils";
+import React from "react";
 import {useSignUpUser} from "../../hooks/user";
 import AuthForm from "./AuthForm";
 import useToIntroPage from "./hooks/useToIntroPage";
