@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import {isEmailValid} from "./Auth+utils";
+import React from "react";
+import useAuthForm from "./hooks/useAuthForm";
 
-interface AuthFormProps {
+export interface AuthFormProps {
   submitLabel: string;
   handleSubmit: (email: string, password: string) => void;
   cancelLabel: string;
@@ -9,27 +9,13 @@ interface AuthFormProps {
 }
 
 const AuthForm = (props: AuthFormProps) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isFormValid, setIsFromValid] = useState({email: false, password: false});
-
-  const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    setIsFromValid({...isFormValid, email: isEmailValid(e.target.value)});
-  }
-
-  const handlePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-    setIsFromValid({...isFormValid, password: e.target.value.length > 8});
-  }
-
-  const handleSubmit = () => {
-    props.handleSubmit(email, password);
-  }
-
-  const handleCancel = () => {
-    props.handleCancel();
-  }
+  const {
+    isFormValid,
+    handleEmailInput,
+    handlePasswordInput,
+    handleSubmit,
+    handleCancel,
+  } = useAuthForm(props.handleSubmit, props.handleCancel);
 
   return (
     <div className={`flex flex-col content-center justify-center gap-2`}>
@@ -38,7 +24,6 @@ const AuthForm = (props: AuthFormProps) => {
       <span>아이디</span>
       <input className={`bg-neutral-100`}
              type="text"
-             value={email}
              onChange={handleEmailInput}
       />
       <span>비밀번호</span>

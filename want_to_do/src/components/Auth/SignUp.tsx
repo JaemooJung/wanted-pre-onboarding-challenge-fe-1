@@ -3,24 +3,21 @@ import React, {useState} from "react";
 import {isEmailValid} from "./Auth+utils";
 import {useSignUpUser} from "../../hooks/user";
 import AuthForm from "./AuthForm";
+import useToIntroPage from "./hooks/useToIntroPage";
 
 const SignUp = () => {
-  const navigate = useNavigate();
+  const toIntroPage = useToIntroPage();
   const {mutate} = useSignUpUser();
 
   const handleSignUp = (email:string, password: string) => {
     mutate({email, password});
   }
 
-  const toIntro = () => {
-    navigate("/");
-  }
-
   return (
     <AuthForm submitLabel={"회원가입"}
               handleSubmit={handleSignUp}
               cancelLabel={"취소"}
-              handleCancel={toIntro}
+              handleCancel={toIntroPage}
     />
   )
 }
