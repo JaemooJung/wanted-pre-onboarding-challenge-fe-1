@@ -6,6 +6,11 @@
 사용 도구
 * vite, react, react-router-dom, react-query, recoil, tailwindcss
 
+실행방법
+<br>`git clone `
+<br>`npm install`
+<br>`npm run dev`
+
 ## 2023/01/10 수업의 과제 개선사항
 1. 여러 컴포넌트에서 공통적으로 사용되던 UI를 별도의 컴포넌트로 분리하였습니다.
 2. AuthForm의 로직을 커스텀 훅을 사용하여 분리하였습니다.
