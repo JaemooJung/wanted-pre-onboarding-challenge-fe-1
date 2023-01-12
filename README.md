@@ -10,4 +10,4 @@
 1. 여러 컴포넌트에서 공통적으로 사용되던 UI를 별도의 컴포넌트로 분리하였습니다.
 2. AuthForm의 로직을 커스텀 훅을 사용하여 분리하였습니다.
 <p>자세한 내용은 아래의 풀리퀘에서 확인하실 수 있습니다.
-<br>https://github.com/JaemooJung/wanted-pre-onboarding-challenge-fe-1/pull/
+<br>https://github.com/JaemooJung/wanted-pre-onboarding-challenge-fe-1/pull/2
