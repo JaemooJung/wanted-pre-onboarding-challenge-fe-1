@@ -7,7 +7,7 @@
 * vite, react, react-router-dom, react-query, recoil, tailwindcss
 
 실행방법
-<br>`git clone `
+<br>`git clone https://github.com/JaemooJung/wanted-pre-onboarding-challenge-fe-1.git`
 <br>`npm install`
 <br>`npm run dev`
 
