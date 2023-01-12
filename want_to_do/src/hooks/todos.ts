@@ -1,6 +1,5 @@
 import {useFetcher} from "./useFetcher";
 import {useMutation, useQuery, useQueryClient} from "react-query";
-import {isEditModeOnState} from "../states/isEditModeOnState";
 import {useSetRecoilState} from "recoil";
 import {todoToUpdateState} from "../states/todoToUpdateState";
 
