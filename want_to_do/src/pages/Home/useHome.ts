@@ -1,8 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import {useRecoilState} from "recoil";
-import {isAddTodoFormDisplayedState} from "../../../states/todo/isAddTodoFormDisplayedState";
-import {isEditModeOnState} from "../../../states/todo/isEditModeOnState";
-import {todoToUpdateState} from "../../../states/todo/todoToUpdateState";
+import {isAddTodoFormDisplayedState} from "../../states/todo/isAddTodoFormDisplayedState";
+import {isEditModeOnState} from "../../states/todo/isEditModeOnState";
+import {todoToUpdateState} from "../../states/todo/todoToUpdateState";
 
 const useHome = () => {
   const navigate = useNavigate();

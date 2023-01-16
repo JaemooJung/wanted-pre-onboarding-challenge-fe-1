@@ -20,7 +20,6 @@ const Intro = () => {
       <button onClick={toSignUp}>
         회원가입
       </button>
-
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import {Outlet} from "react-router-dom";
-import AddTodoForm from "./AddTodoForm";
-import TodoList from "./TodoList";
-import EditTodoForm from "./EditTodoForm";
-import useHome from "./hooks/useHome";
+import AddTodoForm from "../../components/Home/AddTodoForm";
+import TodoList from "../../components/Home/TodoList";
+import EditTodoForm from "../../components/Home/EditTodoForm";
+import useHome from "./useHome";
 
 const Home = () => {
 
