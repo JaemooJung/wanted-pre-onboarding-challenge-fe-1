@@ -1,7 +1,7 @@
 import {useUpdateTodo} from "../../hooks/todos";
 import {useEffect, useState} from "react";
 import {useRecoilState} from "recoil";
-import {todoToUpdateState} from "../../states/todoToUpdateState";
+import {todoToUpdateState} from "../../states/todo/todoToUpdateState";
 import TodoForm from "./TodoForm";
 
 const EditTodoForm = () => {

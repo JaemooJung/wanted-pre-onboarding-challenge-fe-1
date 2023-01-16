@@ -1,8 +1,8 @@
 import React from "react";
 import {Todo, useDeleteTodo} from "../../hooks/todos";
 import {useRecoilState, useRecoilValue} from "recoil";
-import {isEditModeOnState} from "../../states/isEditModeOnState";
-import {todoToUpdateState} from "../../states/todoToUpdateState";
+import {isEditModeOnState} from "../../states/todo/isEditModeOnState";
+import {todoToUpdateState} from "../../states/todo/todoToUpdateState";
 import {useNavigate} from "react-router-dom";
 
 interface TodoListCellProps {

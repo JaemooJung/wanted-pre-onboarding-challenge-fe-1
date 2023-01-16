@@ -3,13 +3,14 @@ import {useState} from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 import {useRecoilState} from "recoil";
-import {isEditModeOnState} from "../../states/isEditModeOnState";
+import {isEditModeOnState} from "../../states/todo/isEditModeOnState";
 import EditTodoForm from "./EditTodoForm";
-import {todoToUpdateState} from "../../states/todoToUpdateState";
+import {todoToUpdateState} from "../../states/todo/todoToUpdateState";
+import {isAddTodoFormDisplayedState} from "../../states/todo/isAddTodoFormDisplayedState";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [isAddTodoOn, setIsAddTodoOn] = useState(false);
+  const [isAddTodoFormDisplayed, setIsAddTodoFormDisplayed] = useRecoilState(isAddTodoFormDisplayedState);
   const [isEditModeOn, setIsEditModeOn] = useRecoilState(isEditModeOnState);
   const [todoToUpdate, setTodoToUpdate] = useRecoilState(todoToUpdateState);
 
@@ -19,9 +20,9 @@ const Home = () => {
     navigate('/');
   }
 
-  const toggleAddTodo = () => {
+  const toggleAddTodoForm = () => {
     setIsEditModeOn(false);
-    setIsAddTodoOn(!isAddTodoOn);
+    setIsAddTodoFormDisplayed(!isAddTodoFormDisplayed);
   }
 
   const toggleEditMode = () => {
@@ -29,7 +30,7 @@ const Home = () => {
       setTodoToUpdate(null);
     }
     setIsEditModeOn(!isEditModeOn);
-    setIsAddTodoOn(false);
+    setIsAddTodoFormDisplayed(false);
   }
 
   const HeaderMenu = () => {
@@ -40,8 +41,8 @@ const Home = () => {
         <button onClick={toggleEditMode}>
           {isEditModeOn ? "완료" : "수정"}
         </button>
-        <button onClick={toggleAddTodo}>
-          {isAddTodoOn ? "x" : "+"}
+        <button onClick={toggleAddTodoForm}>
+          {isAddTodoFormDisplayed ? "x" : "+"}
         </button>
       </div>
     )
@@ -51,7 +52,7 @@ const Home = () => {
     <div className={`flex h-full w-full`}>
       <div className={`flex flex-col`}>
         <HeaderMenu />
-        {isAddTodoOn && <AddTodoForm toggleAddTodo={toggleAddTodo}/>}
+        {isAddTodoFormDisplayed && <AddTodoForm />}
         {todoToUpdate && <EditTodoForm />}
         <TodoList/>
       </div>

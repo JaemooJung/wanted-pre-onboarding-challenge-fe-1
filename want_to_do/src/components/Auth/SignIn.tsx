@@ -21,11 +21,11 @@ const SignIn = () => {
   }
 
   return (
-      <AuthForm submitLabel={"로그인"}
-                handleSubmit={handleSignIn}
-                cancelLabel={"취소"}
-                handleCancel={toIntroPage}
-      />
+    <AuthForm submitLabel={"로그인"}
+              handleSubmit={handleSignIn}
+              cancelLabel={"취소"}
+              handleCancel={toIntroPage}
+    />
   )
 }
 
