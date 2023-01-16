@@ -1,37 +1,19 @@
-import {Outlet, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {Outlet} from "react-router-dom";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
-import {useRecoilState} from "recoil";
-import {isEditModeOnState} from "../../states/todo/isEditModeOnState";
 import EditTodoForm from "./EditTodoForm";
-import {todoToUpdateState} from "../../states/todo/todoToUpdateState";
-import {isAddTodoFormDisplayedState} from "../../states/todo/isAddTodoFormDisplayedState";
+import useHome from "./hooks/useHome";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const [isAddTodoFormDisplayed, setIsAddTodoFormDisplayed] = useRecoilState(isAddTodoFormDisplayedState);
-  const [isEditModeOn, setIsEditModeOn] = useRecoilState(isEditModeOnState);
-  const [todoToUpdate, setTodoToUpdate] = useRecoilState(todoToUpdateState);
 
-  const handleLogout = () => {
-    if (!confirm("정말 로그아웃 하시겠습니까?")) return;
-    localStorage.removeItem('accessToken');
-    navigate('/');
-  }
-
-  const toggleAddTodoForm = () => {
-    setIsEditModeOn(false);
-    setIsAddTodoFormDisplayed(!isAddTodoFormDisplayed);
-  }
-
-  const toggleEditMode = () => {
-    if (todoToUpdate) {
-      setTodoToUpdate(null);
-    }
-    setIsEditModeOn(!isEditModeOn);
-    setIsAddTodoFormDisplayed(false);
-  }
+  const {
+    handleLogout,
+    toggleEditMode,
+    isEditModeOn,
+    todoToUpdate,
+    toggleAddTodoForm,
+    isAddTodoFormDisplayed,
+  } = useHome();
 
   const HeaderMenu = () => {
     return (
