@@ -29,6 +29,7 @@ const Home = () => {
       setTodoToUpdate(null);
     }
     setIsEditModeOn(!isEditModeOn);
+    setIsAddTodoOn(false);
   }
 
   const HeaderMenu = () => {

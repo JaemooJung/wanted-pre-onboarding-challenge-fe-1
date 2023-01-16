@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {isEmailValid} from "../Auth+utils";
+import {isEmailValid, isPasswordValid} from "../Auth+utils";
 
 const useAuthForm = (
   _handleSubmit: (email: string, password: string) => void,
@@ -7,19 +7,24 @@ const useAuthForm = (
 ) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isFormValid, setIsFromValid] = useState({email: false, password: false});
+
+  const isFormValid = ():boolean => {
+    return isEmailValid(email) && isPasswordValid(password);
+  }
 
   const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    setIsFromValid({...isFormValid, email: isEmailValid(e.target.value)});
   }
 
   const handlePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-    setIsFromValid({...isFormValid, password: e.target.value.length > 8});
   }
 
   const handleSubmit = () => {
+    if (!isFormValid()) {
+      alert("이메일과 패스워드를 정확히 입력해주세요.")
+      return;
+    }
     _handleSubmit(email, password);
   }
 
@@ -28,7 +33,6 @@ const useAuthForm = (
   }
 
   return {
-    isFormValid,
     handleEmailInput,
     handlePasswordInput,
     handleSubmit,
