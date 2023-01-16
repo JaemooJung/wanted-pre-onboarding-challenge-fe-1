@@ -1,32 +1,22 @@
-import {useCreateTodo} from "../../hooks/todos";
-import {useState} from "react";
 import TodoForm from "./TodoForm";
+import useAddTodoForm from "./hooks/useAddTodoForm";
 
-interface AddTodoFormProps {
-  toggleAddTodo: () => void;
-}
-
-const AddTodoForm = ({toggleAddTodo}: AddTodoFormProps) => {
-  const createTodo = useCreateTodo();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  const handleCreateTodo = () => {
-    if (title === "") {
-      alert("할 일을 입력해주세요.");
-      return;
-    }
-    createTodo.mutate({title, content});
-    setTitle("");
-    setContent("");
-  }
+const AddTodoForm = () => {
+  const {
+    title,
+    content,
+    setTitle,
+    setContent,
+    handleCreateTodo,
+    handleCancel
+  } = useAddTodoForm();
 
   return (
     <TodoForm title={title}
               content={content}
               setTitle={setTitle}
               setContent={setContent}
-              handleCancel={toggleAddTodo}
+              handleCancel={handleCancel}
               handleSubmit={handleCreateTodo}
               cancelLabel={"취소"}
               submitLabel={"추가"}

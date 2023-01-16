@@ -1,7 +1,7 @@
 import {useFetcher} from "./useFetcher";
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {useSetRecoilState} from "recoil";
-import {todoToUpdateState} from "../states/todoToUpdateState";
+import {todoToUpdateState} from "../states/todo/todoToUpdateState";
 
 export interface Todo {
   title: string;

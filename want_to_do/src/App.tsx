@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Intro from "./components/Intro/Intro";
+import Intro from "./pages/Intro/Intro";
 import SignIn from "./components/Auth/SignIn";
 import SignUp from "./components/Auth/SignUp";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home/Home";
 import {RecoilRoot} from "recoil";
-import NotFound from "./components/NotFound/NotFound";
+import NotFound from "./pages/NotFound/NotFound";
 import TodoDetail from "./components/Home/TodoDetail";
 
 function App() {

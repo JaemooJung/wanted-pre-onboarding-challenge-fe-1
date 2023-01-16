@@ -10,7 +10,6 @@ export interface AuthFormProps {
 
 const AuthForm = (props: AuthFormProps) => {
   const {
-    isFormValid,
     handleEmailInput,
     handlePasswordInput,
     handleSubmit,
@@ -20,7 +19,7 @@ const AuthForm = (props: AuthFormProps) => {
   return (
     <div className={`flex flex-col content-center justify-center gap-2`}>
       <h1>Want-To-Do</h1>
-      <span className={`text-xl mb-4`}>로그인</span>
+      <span className={`text-xl mb-4`}>{props.submitLabel}</span>
       <span>아이디</span>
       <input className={`bg-neutral-100`}
              type="text"
@@ -31,8 +30,7 @@ const AuthForm = (props: AuthFormProps) => {
              type="password"
              onChange={handlePasswordInput}
       />
-      <button onClick={handleSubmit}
-              disabled={!isFormValid.email || !isFormValid.password}>
+      <button onClick={handleSubmit}>
         {props.submitLabel}
       </button>
       <button onClick={handleCancel}>
